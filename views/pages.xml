@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+    <!-- === Home Page === -->
+    <template name="Homepage" id="website.homepage">
+      <t t-call="website.layout">
+        <aside id="fh5co-hero" class="js-fullheight">
+          <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(theme_1/static/src/images/img_bg_1.jpg); height: 699px">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                  <div class="display-t">
+                    <div class="display-tc animate-box" data-animate-effect="fadeIn" style="padding-top: 200px;">
+                      <h1>Homepage</h1>
+                      <h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </aside>
+    <!--  End slider area -->
+        <div id="fh5co-services" class="fh5co-bg-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-4 text-center">
+                <div class="feature-center animate-box" data-animate-effect="fadeIn">
+                  <span class="icon">
+                    <i class="icon-credit-card"></i>
+                  </span>
+                  <h3>Credit Card</h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+                  <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 text-center">
+                <div class="feature-center animate-box" data-animate-effect="fadeIn">
+                  <span class="icon">
+                    <i class="icon-wallet"></i>
+                  </span>
+                  <h3>Save Money</h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+                  <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 text-center">
+                <div class="feature-center animate-box" data-animate-effect="fadeIn">
+                  <span class="icon">
+                    <i class="icon-paper-plane"></i>
+                  </span>
+                  <h3>Free Delivery</h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+                  <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!--  End promo area -->
+        <div id="fh5co-product">
+          <div class="container">
+            <div class="row animate-box">
+              <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <span>Cool Stuff</span>
+                <h2>Products.</h2>
+                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+              </div>
+            </div>
+            <div class="row">
+            <t t-foreach="latest_products" t-as="product">
+              <div class="col-md-4 text-center animate-box">
+                <div class="product">
+                 <div class="inner">
+                  <div class="product-grid">
+                    <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product))">
+                      <span itemprop="image" t-attf-content="{{request.httprequest.url_root}}web/image/product.template/{{product.id}}/image" t-field="product.image" t-options="{'widget': 'image', 'resize': '300x300', 'zoom': 'image'}" t-att-alt="product.name"/>
+                      <p>
+                        <a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
+                        <a href="single.html" class="icon"><i class="icon-eye"></i></a>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                  <div class="desc">
+                    <h3><a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product))" t-att-content="product.name" t-field="product.name"/></h3>
+                    <span class="price">
+                      <ins>
+                        <t t-if="product.website_price_difference and website.get_current_pricelist().discount_policy=='with_discount'">
+                            <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}"/>
+                        </t>
+                        <span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                      </ins>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              </t>
+            </div>
+          </div>
+        </div>
+    <!--  End main content area -->
+    <!--  End brands area -->
+        <div id="fh5co-counter" class="fh5co-bg fh5co-counter" style="background-image:url(theme_1/static/src/images/img_bg_5.jpg);">
+          <div class="container">
+            <div class="row">
+              <div class="display-t">
+                <div class="display-tc">
+                  <div class="col-md-3 col-sm-6 animate-box">
+                    <div class="feature-center">
+                      <span class="icon">
+                        <i class="icon-eye"></i>
+                      </span>
+
+                      <span class="counter js-counter" data-from="0" data-to="22070" data-speed="5000" data-refresh-interval="50">1</span>
+                      <span class="counter-label">Creativity Fuel</span>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 animate-box">
+                    <div class="feature-center">
+                      <span class="icon">
+                        <i class="icon-shopping-cart"></i>
+                      </span>
+
+                      <span class="counter js-counter" data-from="0" data-to="450" data-speed="5000" data-refresh-interval="50">1</span>
+                      <span class="counter-label">Happy Clients</span>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 animate-box">
+                    <div class="feature-center">
+                      <span class="icon">
+                        <i class="icon-shop"></i>
+                      </span>
+                      <span class="counter js-counter" data-from="0" data-to="700" data-speed="5000" data-refresh-interval="50">1</span>
+                      <span class="counter-label">All Products</span>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 animate-box">
+                    <div class="feature-center">
+                      <span class="icon">
+                        <i class="icon-clock"></i>
+                      </span>
+
+                      <span class="counter js-counter" data-from="0" data-to="5605" data-speed="5000" data-refresh-interval="50">1</span>
+                      <span class="counter-label">Hours Spent</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="fh5co-started">
+          <div class="container">
+            <div class="row animate-box">
+              <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Newsletter</h2>
+                <p>Just stay tune for our latest Product. Now you can subscribe</p>
+              </div>
+            </div>
+            <div class="row animate-box">
+              <div class="col-md-8 col-md-offset-2">
+                <form class="form-inline">
+                  <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <label for="email" class="sr-only">Email</label>
+                      <input type="email" class="form-control" id="email" placeholder="Email"/>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                    <button type="submit" class="btn btn-default btn-block">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!--  End product widget area -->
+      </t>
+    </template>
+
+    <!-- shop product listing -->
+    <template id="custom_products" inherit_id="website_sale.products" name="Custom Products" priority="17">
+      <xpath expr="//div[@id='wrap']" position="replace">
+      <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(theme_1/static/src/images/img_bg_2.jpg);">
+        <!-- <img src="theme_1/static/src/images/cover-prod.png" id="fh5co-header" class="fh5co-cover fh5co-cover-sm"/> -->
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+              <div class="display-t">
+                <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                  <h1>Product</h1>
+                  <h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div id="fh5co-product">
+        <div class="container">
+          <div class="row animate-box">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+            <span>Cool Stuff</span>
+            <h2>Products.</h2>
+            <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+          </div>
+          <div class="row" >
+             <t t-foreach="bins" t-as="tr_product">
+                <t t-foreach="tr_product" t-as="td_product">
+                  <t t-if="td_product">
+                    <t t-set="product" t-value="td_product['product']"/>
+                        <div class="col-md-4 text-center animate-box" t-att-data-publish="product.website_published and 'on' or 'off'">
+                          <div class="product">
+                            <div class="inner">
+                              <div class="product-grid">
+                                <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                                  <span itemprop="image" t-attf-content="{{request.httprequest.url_root}}web/image/product.template/{{product.id}}/image" t-field="product.image" t-options="{'widget': 'image', 'resize': '300x300', 'zoom': 'image'}" t-att-alt="product.name"/>
+                                </a>
+                                  <p>
+                                    <!-- <a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
+                                    <a href="single.html" class="icon"><i class="icon-eye"></i></a> -->
+                                    <input name="product_id" t-att-value="product.product_variant_id.id" type="hidden" />
+                                    <t t-if="len(product.product_variant_ids) == 1">
+                                        <a class="btn add_to_cart_button a-submit">
+                                            <span class="icon-shopping-cart"/> Add to cart
+                                        </a>
+                                    </t>
+                                    <t t-if="len(product.product_variant_ids) &gt; 1">
+                                        <a class="btn add_to_cart_button" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                                            <span class="icon-shopping-cart"/> Add to cart
+                                        </a>
+                                    </t>
+                                  </p>
+                                </div>
+                              </div>
+                            <div class="desc">
+                              <h3><a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-att-content="product.name" t-field="product.name"/></h3>
+                              <span class="price">
+                                <ins>
+                                  <t t-if="product.website_price_difference and website.get_current_pricelist().discount_policy=='without_discount'">
+                                      <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}"/>
+                                  </t>
+                                  <span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                  <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
+                                  <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                                </ins>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </t>
+                    </t>
+                  </t>
+                  <t t-if="not bins">
+                    <div class="text-center text-muted oe_product">
+                        <h3 class="css_editable_display">No product defined.</h3>
+                        <p groups="sales_team.group_sale_manager">Click <i>'New'</i> in the top-right corner to create your first product.</p>
+                    </div>
+                </t>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="product-pagination text-center">
+                      <t t-call="website.pager"/>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- End single product area -->  
+      </xpath>
+    </template>
+  </data>
+</odoo>
